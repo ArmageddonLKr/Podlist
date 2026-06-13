@@ -13,6 +13,49 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'SF UI Display';
+  src: url('fonts/sf-ui-display-light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SF UI Display';
+  src: url('fonts/sf-ui-display-medium.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SF UI Display';
+  src: url('fonts/sf-ui-display-medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SF UI Display';
+  src: url('fonts/sf-ui-display-semibold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SF UI Display';
+  src: url('fonts/sf-ui-display-bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SF UI Display';
+  src: url('fonts/sf-ui-display-heavy.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
 *, *::before, *::after {
   margin: 0;
   padding: 0;
@@ -41,8 +84,8 @@
   --grad-vibrante: linear-gradient(135deg, var(--amarelo), var(--laranja), var(--pink));
   --grad-full:     linear-gradient(135deg, var(--roxo), var(--pink), var(--laranja));
 
-  --fonte-display: 'Nove', 'Inter', sans-serif;
-  --fonte-corpo:   'Inter', sans-serif;
+  --fonte-display: 'Nove', 'SF UI Display', sans-serif;
+  --fonte-corpo:   'SF UI Display', 'Inter', sans-serif;
 
   --radius:        16px;
   --radius-lg:     24px;
