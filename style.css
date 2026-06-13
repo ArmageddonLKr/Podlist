@@ -181,11 +181,24 @@ a   { color: inherit; }
   text-decoration: none;
   white-space: nowrap;
   transition: transform .22s var(--ease-bounce), box-shadow .22s var(--ease);
+  position: relative;
+  overflow: hidden;
+}
+.btn-pri::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -80%;
+  width: 50%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.30), transparent);
+  transform: skewX(-18deg);
+  transition: left .55s ease;
+  pointer-events: none;
 }
 .btn-pri:hover {
   transform: translateY(-3px);
-  box-shadow: 0 16px 40px rgba(243, 177, 26, 0.40);
+  box-shadow: 0 16px 40px rgba(243, 177, 26, 0.45);
 }
+.btn-pri:hover::before { left: 150%; }
 
 .btn-sec {
   display: inline-flex;
@@ -402,6 +415,21 @@ a   { color: inherit; }
   55%       { box-shadow: 0 0 0 16px rgba(243,177,26,.0), 0 12px 40px rgba(221,47,119,.22); }
 }
 
+@keyframes heroShimmer {
+  0%  { background-position: 0% center; }
+  100%{ background-position: 300% center; }
+}
+
+@keyframes pillPulse {
+  0%, 100% { border-color: rgba(243,177,26,.28); box-shadow: none; }
+  50%       { border-color: rgba(243,177,26,.75); box-shadow: 0 0 22px rgba(243,177,26,.16); }
+}
+
+@keyframes caseGlow {
+  0%, 100% { box-shadow: 0 24px 64px rgba(243,177,26,.22); }
+  50%       { box-shadow: 0 24px 80px rgba(229,84,63,.36); }
+}
+
 .hero-content {
   position: relative;
   z-index: 2;
@@ -422,6 +450,18 @@ a   { color: inherit; }
   border-radius: var(--radius-pill);
   border: 1px solid rgba(243, 177, 26, 0.28);
   background: rgba(243, 177, 26, 0.06);
+  animation: pillPulse 3.2s ease-in-out infinite;
+}
+
+.hero-title .grad-text {
+  background: linear-gradient(90deg,
+    var(--amarelo), var(--laranja), var(--pink),
+    rgba(255,255,255,.55), var(--pink), var(--laranja), var(--amarelo));
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: heroShimmer 5s linear infinite;
 }
 .eyebrow-pill::before {
   content: '';
@@ -562,7 +602,10 @@ section { padding: 112px 0; }
   -webkit-text-fill-color: transparent;
   background-clip: text;
   line-height: 1;
+  transform: translateY(14px) scale(.85);
+  transition: transform .85s var(--ease-bounce);
 }
+.stat.in strong { transform: translateY(0) scale(1); }
 .stat small {
   font-size: 11px;
   color: var(--texto-muted);
@@ -575,7 +618,21 @@ section { padding: 112px 0; }
 /* --------------------------------------------------------------------------
    SERVIÇOS
    -------------------------------------------------------------------------- */
-#servicos { background: var(--roxo-medio); }
+#servicos {
+  background: var(--roxo-medio);
+  position: relative;
+  overflow: hidden;
+}
+#servicos::before {
+  content: '';
+  position: absolute;
+  bottom: -110px; right: -90px;
+  width: 520px; height: 520px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(221,47,119,.11) 0%, transparent 68%);
+  pointer-events: none;
+}
+#servicos .container { position: relative; z-index: 1; }
 
 .servicos-header {
   display: flex;
@@ -604,9 +661,12 @@ section { padding: 112px 0; }
 .card::before {
   content: '';
   position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(111,17,127,.10) 0%, transparent 70%);
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%),
+    rgba(255,255,255,.07) 0%, transparent 65%);
   opacity: 0;
-  transition: opacity .30s;
+  transition: opacity .35s;
+  border-radius: inherit;
+  pointer-events: none;
 }
 .card::after {
   content: '';
@@ -664,7 +724,22 @@ section { padding: 112px 0; }
 /* --------------------------------------------------------------------------
    EQUIPE
    -------------------------------------------------------------------------- */
-#equipe { background: var(--roxo-escuro); }
+#equipe {
+  background: var(--roxo-escuro);
+  position: relative;
+  overflow: hidden;
+}
+#equipe::before {
+  content: '';
+  position: absolute;
+  bottom: -100px; left: 50%;
+  transform: translateX(-50%);
+  width: 580px; height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(111,17,127,.16) 0%, transparent 70%);
+  pointer-events: none;
+}
+#equipe .container { position: relative; z-index: 1; }
 
 .equipe-header {
   text-align: center;
@@ -757,13 +832,27 @@ section { padding: 112px 0; }
   background: var(--glass);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius);
-  transition: background .25s, border-color .25s, transform .25s var(--ease);
+  transition: background .25s, border-color .25s, transform .25s var(--ease), box-shadow .25s;
+  position: relative;
+  overflow: hidden;
+}
+.feature-item::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%),
+    rgba(243,177,26,.09) 0%, transparent 65%);
+  opacity: 0;
+  transition: opacity .35s;
+  border-radius: inherit;
+  pointer-events: none;
 }
 .feature-item:hover {
   background: var(--glass-hover);
-  border-color: rgba(243,177,26,.22);
+  border-color: rgba(243,177,26,.25);
   transform: translateY(-4px);
+  box-shadow: inset 3px 0 0 rgba(243,177,26,.50);
 }
+.feature-item:hover::before { opacity: 1; }
 
 .feature-icon {
   width: 50px; height: 50px;
@@ -803,6 +892,7 @@ section { padding: 112px 0; }
   justify-content: space-between;
   gap: 40px;
   flex-wrap: wrap;
+  animation: caseGlow 4.5s ease-in-out infinite;
 }
 .presenca-case-text p {
   font-size: 16px;
@@ -825,7 +915,21 @@ section { padding: 112px 0; }
 /* --------------------------------------------------------------------------
    CONTATO
    -------------------------------------------------------------------------- */
-#contato { background: var(--roxo-escuro); }
+#contato {
+  background: var(--roxo-escuro);
+  position: relative;
+  overflow: hidden;
+}
+#contato::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 540px; height: 540px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(221,47,119,.09) 0%, transparent 70%);
+  pointer-events: none;
+}
+#contato .container { position: relative; z-index: 1; }
 
 .contato-grid {
   display: grid;
@@ -1058,6 +1162,8 @@ footer {
   }
   .tri { display: none; }
   html { scroll-behavior: auto; }
-  .btn-pri:hover, .btn-sec:hover, .card:hover, .social-item:hover { transform: none; }
-  .team-avatar { animation: none; }
+  .btn-pri:hover, .btn-sec:hover, .card:hover, .social-item:hover, .feature-item:hover { transform: none; }
+  .team-avatar, .eyebrow-pill, .presenca-case { animation: none; }
+  .hero-title .grad-text { animation: none; background-size: auto; }
+  .stat strong, .stat.in strong { transform: none; transition: none; }
 }
