@@ -28,10 +28,7 @@
   <!-- Google Search Console (preencher quando configurar) -->
   <!-- <meta name="google-site-verification" content=""> -->
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Fontes locais — Nove (display) + SF UI Display (corpo) via @font-face no CSS -->
 
   <link rel="stylesheet" href="style.css">
 </head>
@@ -43,9 +40,8 @@
 <nav class="navbar" id="nav" role="navigation" aria-label="Menu principal">
 
   <a href="#inicio" class="nav-logo" aria-label="Podlist Cultural — Início">
-    <img src="assets/logo.png" alt="Podlist Cultural"
-         onerror="this.style.display='none'; this.nextElementSibling.style.display='inline'">
-    <span class="nav-logo-text" style="display:none">Podlist Cultural</span>
+    <img src="assets/icone-preto.png" alt="" class="nav-logo-img" aria-hidden="true">
+    <span class="nav-logo-text">Podlist Cultural</span>
   </a>
 
   <ul class="nav-links" role="list">
@@ -148,10 +144,10 @@
         <div class="eyebrow">Quem somos</div>
         <h2 class="sec-title" id="sobre-titulo">A voz da<br>nossa cultura</h2>
         <p class="sec-desc" style="margin-bottom:18px">
-          A Podlist Cultural é uma produtora de conteúdo especializada em cultura. Nascemos com a missão de amplificar vozes, histórias e tradições através da mídia digital.
+          A Podlist Cultural não é apenas um espaço de gravação — é um amplificador de ideias, histórias e pluralidade. Nascemos com a missão de fazer barulho no digital.
         </p>
         <p class="sec-desc">
-          Acreditamos que cultura é conexão. Por isso, produzimos conteúdo que vai além dos palcos — chegando em podcasts, vídeos, eventos e muito mais.
+          Transformamos o áudio em cultura visual: trazendo peso na tipografia, calor nas cores e dinamismo nas formas para acolher criadores que querem ser encontrados.
         </p>
 
         <div class="sobre-stats" aria-label="Nossos números">
@@ -253,48 +249,84 @@
 
 
 <!-- =====================================================================
-     PRESENÇA DIGITAL
+     CRIAÇÃO DE SITES
 ===================================================================== -->
 <section id="presenca" aria-labelledby="presenca-titulo">
   <div class="container">
-    <div class="presenca-box fade">
 
-      <div class="eyebrow" style="justify-content:center">Presença Digital</div>
-      <h2 class="sec-title" id="presenca-titulo">Seu projeto cultural<br>merece ser encontrado</h2>
-      <p class="sec-desc">
-        Ter um site profissional é o primeiro passo para aparecer no Google e alcançar mais pessoas. A cena cultural está crescendo no digital — e nós podemos te ajudar a estar lá.
-      </p>
+    <div class="presenca-intro">
+      <div class="fade">
+        <div class="eyebrow">Criação de Sites</div>
+        <h2 class="sec-title" id="presenca-titulo">Quer um site assim<br>pro seu projeto?</h2>
+        <p class="sec-desc">
+          O que você está vendo agora foi feito pela Podlist Cultural. Criamos sites profissionais, rápidos e com identidade visual exclusiva para produtoras, eventos e projetos culturais.
+        </p>
+      </div>
+    </div>
 
-      <div class="presenca-items" aria-label="Benefícios">
-        <div class="pi">
-          <div class="pi-icon" aria-hidden="true">🔍</div>
-          <span>Aparecer no Google</span>
-        </div>
-        <div class="pi">
-          <div class="pi-icon" aria-hidden="true">🌐</div>
-          <span>Domínio próprio .com.br</span>
-        </div>
-        <div class="pi">
-          <div class="pi-icon" aria-hidden="true">📲</div>
-          <span>Site responsivo</span>
-        </div>
-        <div class="pi">
-          <div class="pi-icon" aria-hidden="true">⚡</div>
-          <span>Entrega em dias</span>
-        </div>
-        <div class="pi">
-          <div class="pi-icon" aria-hidden="true">💰</div>
-          <span>Preço acessível</span>
+    <div class="features-grid">
+
+      <div class="feature-item fade delay-1">
+        <div class="feature-icon" aria-hidden="true">🎨</div>
+        <div class="feature-body">
+          <strong>Design exclusivo</strong>
+          <span>Identidade visual do seu projeto em cada detalhe — sem templates genéricos.</span>
         </div>
       </div>
 
-      <a href="https://wa.me/5586981931865?text=Olá!%20Vi%20o%20site%20da%20Podlist%20e%20quero%20um%20site%20para%20meu%20projeto%20cultural."
-         target="_blank" rel="noopener noreferrer"
-         class="btn-pri" style="font-size:16px;padding:18px 50px">
-        Quero um site para meu projeto ▲
-      </a>
+      <div class="feature-item fade delay-2">
+        <div class="feature-icon" aria-hidden="true">⚡</div>
+        <div class="feature-body">
+          <strong>Entrega em dias</strong>
+          <span>Do briefing ao site no ar em dias, não meses. Agilidade sem abrir mão da qualidade.</span>
+        </div>
+      </div>
+
+      <div class="feature-item fade delay-3">
+        <div class="feature-icon" aria-hidden="true">🌐</div>
+        <div class="feature-body">
+          <strong>Domínio .com.br</strong>
+          <span>Seu endereço próprio na internet. Profissional, memorável e confiável.</span>
+        </div>
+      </div>
+
+      <div class="feature-item fade delay-1">
+        <div class="feature-icon" aria-hidden="true">📱</div>
+        <div class="feature-body">
+          <strong>100% responsivo</strong>
+          <span>Perfeito em celular, tablet e computador — onde seu público estiver.</span>
+        </div>
+      </div>
+
+      <div class="feature-item fade delay-2">
+        <div class="feature-icon" aria-hidden="true">🔍</div>
+        <div class="feature-body">
+          <strong>Otimizado para Google</strong>
+          <span>SEO de base para seu projeto aparecer nas buscas e ser encontrado.</span>
+        </div>
+      </div>
+
+      <div class="feature-item fade delay-3">
+        <div class="feature-icon" aria-hidden="true">💬</div>
+        <div class="feature-body">
+          <strong>Suporte do início ao fim</strong>
+          <span>Acompanhamento completo: do planejamento ao lançamento e além.</span>
+        </div>
+      </div>
 
     </div>
+
+    <div class="presenca-case fade">
+      <div class="presenca-case-text">
+        <span class="eyebrow" style="color:var(--roxo-escuro)">Nosso portfólio</span>
+        <p>Esse site é a nossa prova. Cada pixel aqui foi pensado para demonstrar o que entregamos aos nossos clientes — com a mesma dedicação e qualidade.</p>
+      </div>
+      <a href="https://wa.me/5586981931865?text=Olá!%20Vi%20o%20site%20da%20Podlist%20e%20quero%20um%20site%20para%20meu%20projeto%20cultural."
+         target="_blank" rel="noopener noreferrer" class="btn-pri">
+        Solicitar criação de site ▲
+      </a>
+    </div>
+
   </div>
 </section>
 
@@ -376,9 +408,8 @@
     <div class="footer-in">
 
       <a href="#inicio" class="footer-logo" aria-label="Voltar ao início">
-        <img src="assets/logo.png" alt="Podlist Cultural"
-             onerror="this.style.display='none'; this.nextElementSibling.style.display='inline'">
-        <span class="footer-logo-text" style="display:none">Podlist Cultural</span>
+        <img src="assets/icone-preto.png" alt="" class="nav-logo-img" aria-hidden="true">
+        <span class="footer-logo-text">Podlist Cultural</span>
       </a>
 
       <p class="footer-copy">© 2026 Podlist Cultural · Todos os direitos reservados</p>
