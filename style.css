@@ -1108,6 +1108,19 @@ footer {
   font-size: 28px;
   cursor: pointer;
   line-height: 1;
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+}
+.m-close::before,
+.m-close::after {
+  content: '';
+  position: absolute;
+  width: 24px; height: 2.5px;
+  background: var(--branco);
+  border-radius: 2px;
+}
+.m-close::before { transform: rotate(45deg); }
+.m-close::after  { transform: rotate(-45deg); }
 }
 
 /* --------------------------------------------------------------------------
