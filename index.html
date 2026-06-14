@@ -30,6 +30,13 @@
 
   <!-- Fontes locais — Nove (display) + SF UI Display (corpo) via @font-face no CSS -->
 
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#6F117F">
+  <link rel="apple-touch-icon" href="assets/icon-192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -70,7 +77,7 @@
   <button class="m-close" id="mClose" aria-label="Fechar menu">✕</button>
   <a href="#sobre"    onclick="closeMenu()">Sobre</a>
   <a href="#servicos" onclick="closeMenu()">Serviços</a>
-  <a href="#equipe"   onclick="closeMenu()">Time</a>
+  <a href="#equipe"   onclick="closeMenu()" class="m-menu-long">Quem está por trás</a>
   <a href="#presenca" onclick="closeMenu()">Presença Digital</a>
   <a href="#contato"  onclick="closeMenu()">Contato</a>
   <a href="https://wa.me/5586981931865" target="_blank" rel="noopener noreferrer"
@@ -448,5 +455,12 @@
 
 
 <script src="script.js"></script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js');
+    });
+  }
+</script>
 </body>
 </html>
