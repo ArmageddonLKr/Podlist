@@ -282,7 +282,7 @@ a   { color: inherit; }
 .nav-logo-img {
   height: 38px;
   width: auto;
-  mix-blend-mode: screen;
+  border-radius: 8px;
   flex-shrink: 0;
 }
 .nav-logo-text {
