@@ -1093,6 +1093,12 @@ footer {
   transition: color .2s;
 }
 .m-menu a:hover { color: var(--amarelo); }
+.m-menu-long {
+  font-size: 26px !important;
+  text-align: center;
+  line-height: 1.25;
+  max-width: 80vw;
+}
 .m-close {
   position: absolute;
   top: 24px; right: 26px;
@@ -1130,6 +1136,15 @@ footer {
   footer { padding: 36px 0; }
   .footer-in { flex-direction: column; text-align: center; }
   .footer-links { justify-content: center; }
+}
+
+@media (max-width: 768px) {
+  .stat { padding: 0 24px; }
+  .hero-title { font-size: clamp(52px, 14vw, 100px); }
+  .hero-sub { font-size: clamp(14px, 4vw, 22px); }
+  .cards-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .sec-inner { padding: 0 20px; }
+  .hero { padding: 100px 20px 72px; }
 }
 
 @media (max-width: 520px) {
