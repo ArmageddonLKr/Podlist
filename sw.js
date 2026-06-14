@@ -1,30 +1,6 @@
 const CACHE = 'podlist-v1';
-const ASSETS = [
-  '/',
-  '/index.html',
-  '/style.css',
-  '/script.js',
-  '/manifest.json',
-  '/fonts/nove.ttf',
-  '/fonts/sf-ui-display-light.otf',
-  '/fonts/sf-ui-display-medium.otf',
-  '/fonts/sf-ui-display-semibold.otf',
-  '/fonts/sf-ui-display-bold.otf',
-  '/fonts/sf-ui-display-heavy.otf',
-  '/assets/icone-preto.png',
-  '/assets/anderson.jpg',
-  '/assets/icon-192.png',
-  '/assets/icon-512.png',
-  '/assets/favicon-32.png',
-  '/assets/favicon-16.png'
-];
 
-self.addEventListener('install', e => {
-  e.waitUntil(
-    caches.open(CACHE).then(c => c.addAll(ASSETS))
-  );
-  self.skipWaiting();
-});
+self.addEventListener('install', () => self.skipWaiting());
 
 self.addEventListener('activate', e => {
   e.waitUntil(
@@ -38,6 +14,14 @@ self.addEventListener('activate', e => {
 self.addEventListener('fetch', e => {
   if (e.request.method !== 'GET') return;
   e.respondWith(
-    caches.match(e.request).then(cached => cached || fetch(e.request))
+    caches.open(CACHE).then(cache =>
+      cache.match(e.request).then(cached => {
+        if (cached) return cached;
+        return fetch(e.request).then(res => {
+          if (res.ok) cache.put(e.request, res.clone());
+          return res;
+        }).catch(() => cached);
+      })
+    )
   );
 });

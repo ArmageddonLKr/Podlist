@@ -2,7 +2,7 @@
   "name": "Podlist Cultural",
   "short_name": "Podlist",
   "description": "Produtora de conteúdo cultural — podcasts, audiovisual e presença digital",
-  "start_url": "/",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#140320",
   "theme_color": "#6F117F",
