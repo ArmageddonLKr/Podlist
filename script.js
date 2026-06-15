@@ -31,9 +31,11 @@ function closeMenu() {
   document.body.style.overflow = '';
 }
 
-ham.addEventListener('click', openMenu);
+ham.addEventListener('click', () => {
+  mMenu.classList.contains('open') ? closeMenu() : openMenu();
+});
 ham.addEventListener('keydown', e => {
-  if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openMenu(); }
+  if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); mMenu.classList.contains('open') ? closeMenu() : openMenu(); }
 });
 mClose.addEventListener('click', closeMenu);
 document.addEventListener('keydown', e => {
