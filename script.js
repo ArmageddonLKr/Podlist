@@ -15,15 +15,19 @@ const mClose = document.getElementById('mClose');
 
 function openMenu() {
   mMenu.classList.add('open');
+  ham.classList.add('is-open');
   mMenu.setAttribute('aria-hidden', 'false');
   ham.setAttribute('aria-expanded', 'true');
+  ham.setAttribute('aria-label', 'Fechar menu');
   document.body.style.overflow = 'hidden';
 }
 
 function closeMenu() {
   mMenu.classList.remove('open');
+  ham.classList.remove('is-open');
   mMenu.setAttribute('aria-hidden', 'true');
   ham.setAttribute('aria-expanded', 'false');
+  ham.setAttribute('aria-label', 'Abrir menu');
   document.body.style.overflow = '';
 }
 
