@@ -36,10 +36,15 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape' && mMenu.classList.contains('open')) closeMenu();
 });
 
-// Fecha o menu ao redimensionar para desktop
-window.addEventListener('resize', () => {
-  if (window.innerWidth > 980 && mMenu.classList.contains('open')) closeMenu();
-}, { passive: true });
+// Fallback JS para responsividade do navbar
+// (cobre dispositivos onde media queries podem não disparar corretamente)
+function checkNav() {
+  const isMobile = window.innerWidth <= 1024;
+  nav.classList.toggle('mobile-nav', isMobile);
+  if (!isMobile && mMenu.classList.contains('open')) closeMenu();
+}
+checkNav();
+window.addEventListener('resize', checkNav, { passive: true });
 
 // Animações de entrada via IntersectionObserver
 function animateCount(statEl) {
