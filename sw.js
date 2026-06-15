@@ -1,27 +1,68 @@
-const CACHE = 'podlist-v1';
+const CACHE = 'podlist-v2';
 
-self.addEventListener('install', () => self.skipWaiting());
+const PRECACHE = [
+  './',
+  './index.html',
+  './style.css',
+  './script.js',
+  './manifest.json',
+  './assets/icon-192.png',
+  './assets/icon-512.png',
+  './assets/favicon-32.png',
+  './assets/favicon-16.png',
+];
+
+self.addEventListener('install', e => {
+  e.waitUntil(
+    caches.open(CACHE)
+      .then(c => c.addAll(PRECACHE))
+      .then(() => self.skipWaiting())
+  );
+});
 
 self.addEventListener('activate', e => {
   e.waitUntil(
-    caches.keys().then(keys =>
-      Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))
-    )
+    caches.keys()
+      .then(keys => Promise.all(
+        keys.filter(k => k !== CACHE).map(k => caches.delete(k))
+      ))
+      .then(() => self.clients.claim())
   );
-  self.clients.claim();
 });
 
 self.addEventListener('fetch', e => {
   if (e.request.method !== 'GET') return;
+
+  // Navegação: rede primeiro, fallback para cache
+  if (e.request.mode === 'navigate') {
+    e.respondWith(
+      fetch(e.request)
+        .then(res => {
+          caches.open(CACHE).then(c => c.put(e.request, res.clone()));
+          return res;
+        })
+        .catch(() =>
+          caches.match('./index.html').then(r => r || caches.match('./'))
+        )
+    );
+    return;
+  }
+
+  // Assets: cache primeiro, rede como fallback (stale-while-revalidate)
   e.respondWith(
     caches.open(CACHE).then(cache =>
       cache.match(e.request).then(cached => {
-        if (cached) return cached;
-        return fetch(e.request).then(res => {
+        const network = fetch(e.request).then(res => {
           if (res.ok) cache.put(e.request, res.clone());
           return res;
-        }).catch(() => cached);
+        }).catch(() => null);
+        return cached || network;
       })
     )
   );
+});
+
+// Permite que o cliente solicite ativação imediata da nova versão
+self.addEventListener('message', e => {
+  if (e.data === 'SKIP_WAITING') self.skipWaiting();
 });

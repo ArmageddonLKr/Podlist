@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <!-- Evita flash branco antes do CSS carregar -->
+  <style>html,body{background:#140320}</style>
 
   <!-- SEO -->
   <title>Podlist Cultural — Produtora de Conteúdo Cultural</title>
@@ -24,6 +27,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Podlist Cultural">
   <meta name="twitter:description" content="Produtora de conteúdo cultural — podcasts, audiovisual e projetos que conectam pessoas à cultura.">
+  <meta name="twitter:image" content="https://podlistcultural.com.br/assets/og-image.jpg">
 
   <!-- Google Search Console (preencher quando configurar) -->
   <!-- <meta name="google-site-verification" content=""> -->
@@ -33,6 +37,12 @@
   <!-- PWA -->
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#6F117F">
+  <meta name="msapplication-TileColor" content="#6F117F">
+  <!-- iOS PWA -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Podlist">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/icon-192.png">
   <link rel="apple-touch-icon" href="assets/icon-192.png">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
@@ -40,6 +50,18 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<!-- Link de acessibilidade para pular ao conteúdo -->
+<a href="#inicio" class="skip-link">Pular para o conteúdo</a>
+
+<!-- Indicador de status de rede -->
+<div id="net-banner" class="net-banner" role="status" aria-live="polite" aria-atomic="true"></div>
+
+<!-- Toast de atualização disponível -->
+<div id="update-toast" class="update-toast" role="alertdialog" aria-label="Atualização disponível" hidden>
+  <span>Nova versão disponível</span>
+  <button id="update-btn" class="update-btn">Atualizar</button>
+</div>
 
 <!-- =====================================================================
      NAVBAR
@@ -242,7 +264,7 @@
     <div class="equipe-grid">
       <div class="team-card fade">
         <div class="team-avatar">
-          <img src="assets/anderson.jpg" alt="Anderson Vale">
+          <img src="assets/anderson.jpg" alt="Anderson Vale" loading="lazy" decoding="async">
         </div>
         <h3 class="team-name">Anderson Vale</h3>
         <span class="team-role">Fundador & Diretor Criativo</span>
@@ -458,7 +480,27 @@
 <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('sw.js');
+      navigator.serviceWorker.register('sw.js').then(reg => {
+        reg.addEventListener('updatefound', () => {
+          const newSW = reg.installing;
+          newSW.addEventListener('statechange', () => {
+            if (newSW.state === 'installed' && navigator.serviceWorker.controller) {
+              const toast = document.getElementById('update-toast');
+              if (toast) {
+                toast.removeAttribute('hidden');
+                document.getElementById('update-btn').onclick = () => {
+                  newSW.postMessage('SKIP_WAITING');
+                  navigator.serviceWorker.addEventListener('controllerchange', () => {
+                    window.location.reload();
+                  });
+                };
+              }
+            }
+          });
+        });
+      }).catch(err => {
+        console.warn('[SW] Registro falhou:', err);
+      });
     });
   }
 </script>
