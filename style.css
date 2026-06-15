@@ -350,8 +350,14 @@ a   { color: inherit; }
   width: 24px; height: 2px;
   background: var(--branco);
   border-radius: 2px;
-  transition: all .3s var(--ease);
+  transition: transform .3s var(--ease), opacity .3s var(--ease);
+  transform-origin: center;
 }
+
+/* Hamburger → X quando menu abre */
+.hamburger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.is-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 /* --------------------------------------------------------------------------
    HERO
@@ -1108,27 +1114,8 @@ footer {
   max-width: 80vw;
 }
 .m-close {
-  position: absolute;
-  top: 24px; right: 26px;
-  background: none;
-  border: none;
-  color: var(--branco);
-  font-size: 28px;
-  cursor: pointer;
-  line-height: 1;
-  width: 36px; height: 36px;
-  display: flex; align-items: center; justify-content: center;
+  display: none; /* O hamburger faz transform → X; este botão é redundante */
 }
-.m-close::before,
-.m-close::after {
-  content: '';
-  position: absolute;
-  width: 24px; height: 2.5px;
-  background: var(--branco);
-  border-radius: 2px;
-}
-.m-close::before { transform: rotate(45deg); }
-.m-close::after  { transform: rotate(-45deg); }
 
 /* --------------------------------------------------------------------------
    RESPONSIVO — sistema cross-device completo
