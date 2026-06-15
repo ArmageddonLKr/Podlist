@@ -1,4 +1,4 @@
-const CACHE = 'podlist-v2';
+const CACHE = 'podlist-v3';
 
 const PRECACHE = [
   './',
@@ -10,6 +10,16 @@ const PRECACHE = [
   './assets/icon-512.png',
   './assets/favicon-32.png',
   './assets/favicon-16.png',
+  './assets/icone-laranja.png',
+  './assets/icone-branco.png',
+  './assets/icone-preto.png',
+  './assets/isologo-amarelo.png',
+  './assets/isologo-laranja.png',
+  './assets/isologo-pink.png',
+  './assets/logo-branco.jpg',
+  './assets/logo-pink.jpg',
+  './assets/logo-roxo.jpg',
+  './assets/anderson.jpg',
 ];
 
 self.addEventListener('install', e => {
