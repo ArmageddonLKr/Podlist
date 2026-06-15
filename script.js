@@ -36,6 +36,11 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape' && mMenu.classList.contains('open')) closeMenu();
 });
 
+// Fecha o menu ao redimensionar para desktop
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 980 && mMenu.classList.contains('open')) closeMenu();
+}, { passive: true });
+
 // Animações de entrada via IntersectionObserver
 function animateCount(statEl) {
   const strong = statEl.querySelector('strong');
@@ -77,3 +82,37 @@ document.querySelectorAll('.card, .feature-item, .team-card').forEach(el => {
     el.style.setProperty('--my', ((e.clientY - r.top)  / r.height * 100) + '%');
   });
 });
+
+// Feedback tátil (haptic) em botões primários em dispositivos móveis
+if ('vibrate' in navigator) {
+  document.querySelectorAll('.btn-pri, .nav-cta, .fab').forEach(btn => {
+    btn.addEventListener('click', () => navigator.vibrate(8));
+  });
+}
+
+// Indicador de status de rede
+(function () {
+  const banner = document.getElementById('net-banner');
+  let hideTimer = null;
+
+  function showBanner(msg, type, duration) {
+    clearTimeout(hideTimer);
+    banner.textContent = msg;
+    banner.className = 'net-banner ' + type + ' show';
+    if (duration) {
+      hideTimer = setTimeout(() => banner.classList.remove('show'), duration);
+    }
+  }
+
+  window.addEventListener('offline', () => {
+    showBanner('Sem conexão com a internet', 'offline', 0);
+  });
+
+  window.addEventListener('online', () => {
+    showBanner('Conexão restaurada', 'restored', 3000);
+  });
+
+  if (!navigator.onLine) {
+    showBanner('Sem conexão com a internet', 'offline', 0);
+  }
+})();
