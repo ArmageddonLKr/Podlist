@@ -57,19 +57,13 @@
 <!-- Indicador de status de rede -->
 <div id="net-banner" class="net-banner" role="status" aria-live="polite" aria-atomic="true"></div>
 
-<!-- Toast de atualização disponível -->
-<div id="update-toast" class="update-toast" role="alertdialog" aria-label="Atualização disponível" hidden>
-  <span>Nova versão disponível</span>
-  <button id="update-btn" class="update-btn">Atualizar</button>
-</div>
-
 <!-- =====================================================================
      NAVBAR
 ===================================================================== -->
 <nav class="navbar" id="nav" role="navigation" aria-label="Menu principal">
 
   <a href="#inicio" class="nav-logo" aria-label="Podlist Cultural — Início">
-    <img src="assets/icone-laranja.png" alt="" class="nav-logo-img" aria-hidden="true">
+    <img src="assets/logo-roxo.jpg" alt="" class="nav-logo-img" aria-hidden="true">
     <span class="nav-logo-text">Podlist Cultural</span>
   </a>
 
@@ -126,9 +120,7 @@
   <div class="tri t10" aria-hidden="true"></div>
 
   <div class="hero-content">
-    <div class="hero-brand fade">
-      <img src="assets/logo-roxo.jpg" alt="Podlist Cultural" class="hero-brand-img" loading="eager">
-    </div>
+    <img src="assets/icon-192.png" alt="Podlist Cultural" class="hero-badge" loading="eager">
     <div class="eyebrow-pill">Podcast · Audiovisual · Cultura Brasileira</div>
 
     <h1 class="hero-title">
@@ -453,7 +445,7 @@
     <div class="footer-in">
 
       <a href="#inicio" class="footer-logo" aria-label="Voltar ao início">
-        <img src="assets/icone-laranja.png" alt="" class="nav-logo-img" aria-hidden="true">
+        <img src="assets/logo-roxo.jpg" alt="" class="nav-logo-img" aria-hidden="true">
         <span class="footer-logo-text">Podlist Cultural</span>
       </a>
 
@@ -483,25 +475,7 @@
 <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('sw.js').then(reg => {
-        reg.addEventListener('updatefound', () => {
-          const newSW = reg.installing;
-          newSW.addEventListener('statechange', () => {
-            if (newSW.state === 'installed' && navigator.serviceWorker.controller) {
-              const toast = document.getElementById('update-toast');
-              if (toast) {
-                toast.removeAttribute('hidden');
-                document.getElementById('update-btn').onclick = () => {
-                  newSW.postMessage('SKIP_WAITING');
-                  navigator.serviceWorker.addEventListener('controllerchange', () => {
-                    window.location.reload();
-                  });
-                };
-              }
-            }
-          });
-        });
-      }).catch(err => {
+      navigator.serviceWorker.register('sw.js').catch(err => {
         console.warn('[SW] Registro falhou:', err);
       });
     });

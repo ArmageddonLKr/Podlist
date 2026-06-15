@@ -281,9 +281,10 @@ a   { color: inherit; }
   flex-shrink: 0;
 }
 .nav-logo-img {
-  height: 38px;
-  width: auto;
-  border-radius: 8px;
+  height: 42px;
+  width: 42px;
+  object-fit: cover;
+  border-radius: 10px;
   flex-shrink: 0;
 }
 .nav-logo-text {
@@ -443,23 +444,14 @@ a   { color: inherit; }
   max-width: 880px;
 }
 
-.hero-brand {
-  margin-bottom: 28px;
-}
-.hero-brand-img {
-  width: 128px;
-  height: 128px;
-  border-radius: 22px;
+.hero-badge {
+  display: block;
+  width: 88px;
+  height: 88px;
+  border-radius: 20px;
   object-fit: cover;
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,.08),
-    0 12px 40px rgba(111,17,127,.55),
-    0 4px 12px rgba(0,0,0,.4);
-  animation: heroBrandPop .6s var(--ease) both;
-}
-@keyframes heroBrandPop {
-  from { opacity: 0; transform: scale(.88) translateY(10px); }
-  to   { opacity: 1; transform: scale(1)  translateY(0); }
+  margin-bottom: 24px;
+  box-shadow: 0 8px 28px rgba(0,0,0,.35), 0 0 0 1px rgba(255,255,255,.08);
 }
 
 .eyebrow-pill {
@@ -1060,7 +1052,7 @@ footer {
   gap: 10px;
   text-decoration: none;
 }
-.footer-logo .nav-logo-img { height: 32px; }
+.footer-logo .nav-logo-img { height: 36px; width: 36px; }
 .footer-logo-text          { font-family: var(--fonte-display); font-size: 19px; color: var(--amarelo); }
 .footer-copy          { font-size: 13px; color: rgba(255,255,255,.28); }
 .footer-links         { display: flex; gap: 26px; }
@@ -1240,8 +1232,7 @@ footer {
   .hero-btns .btn-pri,
   .hero-btns .btn-sec { justify-content: center; min-height: 52px; font-size: 15px; padding: 14px 20px; white-space: normal; }
   .eyebrow-pill { font-size: 7px; letter-spacing: 1.5px; padding: 7px 12px; margin-bottom: 20px; }
-  .hero-brand-img { width: 96px; height: 96px; border-radius: 18px; }
-  .hero-brand { margin-bottom: 22px; }
+  .hero-badge { width: 72px; height: 72px; border-radius: 16px; margin-bottom: 20px; }
 
   .sec-title   { font-size: clamp(28px, 7.5vw, 40px); }
   .sec-desc    { font-size: 14px; }
@@ -1330,7 +1321,6 @@ footer {
   .btn-pri:hover, .btn-sec:hover, .card:hover, .social-item:hover, .feature-item:hover { transform: none; }
   .team-avatar, .eyebrow-pill, .presenca-case { animation: none; }
   .hero-title .grad-text { animation: none; background-size: auto; }
-  .hero-brand-img { animation: none; }
   .stat strong, .stat.in strong { transform: none; transition: none; }
   .m-menu.open { animation: none; }
 }
