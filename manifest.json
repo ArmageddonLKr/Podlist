@@ -6,16 +6,22 @@
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#140320",
+  "background_color": "#6F117F",
   "theme_color": "#6F117F",
   "orientation": "portrait-primary",
   "lang": "pt-BR",
   "categories": ["entertainment", "music", "lifestyle"],
   "icons": [
     {
-      "src": "assets/icon-192.png",
+      "src": "assets/logo-roxo.jpg",
       "sizes": "192x192",
-      "type": "image/png",
+      "type": "image/jpeg",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/logo-roxo.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
       "purpose": "any"
     },
     {
@@ -23,12 +29,6 @@
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable"
-    },
-    {
-      "src": "assets/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
     },
     {
       "src": "assets/icon-512.png",
@@ -41,7 +41,7 @@
     {
       "name": "Fale no WhatsApp",
       "url": "https://wa.me/5586981931865",
-      "icons": [{ "src": "assets/icon-192.png", "sizes": "192x192" }]
+      "icons": [{ "src": "assets/logo-roxo.jpg", "sizes": "192x192" }]
     }
   ]
 }
