@@ -772,6 +772,9 @@ section { padding: 112px 0; }
   width: 100%;
   max-width: 360px;
   transition: transform .30s var(--ease), border-color .30s, background .30s;
+  display: block;
+  text-decoration: none;
+  color: inherit;
 }
 .team-card:hover {
   transform: translateY(-6px);
