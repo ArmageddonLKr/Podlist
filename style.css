@@ -798,6 +798,9 @@ section { padding: 112px 0; }
 }
 .team-avatar img { width:100%; height:100%; object-fit:cover; object-position: top center; }
 
+.team-avatar-link { display: block; text-decoration: none; border-radius: 50%; }
+.team-avatar-link:hover .team-avatar { box-shadow: 0 0 0 3px rgba(243,177,26,.60); }
+
 .team-name {
   font-family: var(--fonte-display);
   font-size: 26px;
