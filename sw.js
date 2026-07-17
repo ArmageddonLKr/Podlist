@@ -1,4 +1,4 @@
-const CACHE = 'podlist-v3';
+const CACHE = 'podlist-v4';
 
 const PRECACHE = [
   './',
