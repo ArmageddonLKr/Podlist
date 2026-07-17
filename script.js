@@ -94,6 +94,85 @@ document.querySelectorAll('.card, .feature-item, .team-card').forEach(el => {
   });
 });
 
+// Carrossel de fotos da equipe — autoplay, setas, dots e swipe
+(function () {
+  const carousel = document.getElementById('equipeCarousel');
+  if (!carousel) return;
+
+  const track    = document.getElementById('equipeTrack');
+  const dotsWrap = document.getElementById('equipeDots');
+  const prevBtn  = carousel.querySelector('.equipe-prev');
+  const nextBtn  = carousel.querySelector('.equipe-next');
+  const slides   = track.children;
+  const total    = slides.length;
+  const AUTOPLAY_MS = 5000;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  let index = 0;
+  let timer = null;
+
+  for (let i = 0; i < total; i++) {
+    const dot = document.createElement('button');
+    dot.type = 'button';
+    dot.className = 'equipe-dot' + (i === 0 ? ' is-active' : '');
+    dot.setAttribute('role', 'tab');
+    dot.setAttribute('aria-label', 'Foto ' + (i + 1));
+    dot.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+    dot.addEventListener('click', () => goTo(i, true));
+    dotsWrap.appendChild(dot);
+  }
+  const dots = dotsWrap.children;
+
+  function render() {
+    carousel.style.setProperty('--pos', index);
+    for (let i = 0; i < total; i++) {
+      dots[i].classList.toggle('is-active', i === index);
+      dots[i].setAttribute('aria-selected', i === index ? 'true' : 'false');
+    }
+  }
+
+  function goTo(i, userAction) {
+    index = (i + total) % total;
+    render();
+    if (userAction) restartAutoplay();
+  }
+  function next(userAction) { goTo(index + 1, userAction); }
+  function prev(userAction) { goTo(index - 1, userAction); }
+
+  function startAutoplay() {
+    if (reduceMotion) return;
+    stopAutoplay();
+    timer = setInterval(() => next(false), AUTOPLAY_MS);
+  }
+  function stopAutoplay() { if (timer) { clearInterval(timer); timer = null; } }
+  function restartAutoplay() { startAutoplay(); }
+
+  prevBtn.addEventListener('click', () => prev(true));
+  nextBtn.addEventListener('click', () => next(true));
+
+  let touchStartX = null;
+  track.addEventListener('touchstart', e => {
+    touchStartX = e.touches[0].clientX;
+    stopAutoplay();
+  }, { passive: true });
+  track.addEventListener('touchend', e => {
+    if (touchStartX === null) return;
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 40) {
+      dx < 0 ? next(true) : prev(true);
+    } else {
+      restartAutoplay();
+    }
+    touchStartX = null;
+  }, { passive: true });
+
+  carousel.addEventListener('mouseenter', stopAutoplay);
+  carousel.addEventListener('mouseleave', startAutoplay);
+
+  render();
+  startAutoplay();
+})();
+
 // Feedback tátil (haptic) em botões primários em dispositivos móveis
 if ('vibrate' in navigator) {
   document.querySelectorAll('.btn-pri, .nav-cta, .fab').forEach(btn => {
