@@ -1,4 +1,4 @@
-const CACHE = 'podlist-v4';
+const CACHE = 'podlist-v5';
 
 const PRECACHE = [
   './',
@@ -48,7 +48,7 @@ self.addEventListener('fetch', e => {
     e.respondWith(
       fetch(e.request)
         .then(res => {
-          caches.open(CACHE).then(c => c.put(e.request, res.clone()));
+          e.waitUntil(caches.open(CACHE).then(c => c.put(e.request, res.clone())));
           return res;
         })
         .catch(() =>
@@ -66,6 +66,9 @@ self.addEventListener('fetch', e => {
           if (res.ok) cache.put(e.request, res.clone());
           return res;
         }).catch(() => null);
+        // Garante que a atualização do cache em segundo plano não seja
+        // interrompida pelo navegador quando a resposta já veio do cache.
+        e.waitUntil(network);
         return cached || network;
       })
     )
