@@ -822,24 +822,73 @@ section { padding: 112px 0; }
   line-height: 1.72;
 }
 
-.equipe-photos {
+.equipe-carousel {
+  position: relative;
   margin-top: 48px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
-  gap: 20px;
-}
-.equipe-photo {
   border-radius: var(--radius-lg);
   overflow: hidden;
   border: 1px solid var(--glass-border);
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 10;
+  background: var(--roxo-deep);
+  touch-action: pan-y;
 }
-.equipe-photo img {
+.equipe-track {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transform: translateX(calc(var(--pos, 0) * -100%));
+  transition: transform .45s var(--ease);
+}
+.equipe-slide {
+  flex: 1 0 100%;
+  width: 100%;
+  height: 100%;
+}
+.equipe-slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: top center;
+  pointer-events: none;
 }
+
+.equipe-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--glass-border2);
+  background: rgba(20,3,42,.55);
+  backdrop-filter: blur(4px);
+  color: var(--branco);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background .2s, border-color .2s;
+}
+.equipe-arrow:hover { background: rgba(20,3,42,.80); border-color: rgba(243,177,26,.45); }
+.equipe-prev { left: 14px; }
+.equipe-next { right: 14px; }
+
+.equipe-dots {
+  position: absolute;
+  left: 0; right: 0; bottom: 16px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+.equipe-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,.35);
+  cursor: pointer;
+  padding: 0;
+  transition: background .2s, transform .2s;
+}
+.equipe-dot.is-active { background: var(--amarelo); transform: scale(1.25); }
 
 /* --------------------------------------------------------------------------
    AGENDA
@@ -1388,6 +1437,7 @@ footer {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .equipe-track { transition: none; }
   .fade, .fade-l, .fade-r {
     opacity: 1;
     transform: none;

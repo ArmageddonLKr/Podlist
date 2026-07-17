@@ -189,13 +189,22 @@
       </div>
     </div>
 
-    <div class="equipe-photos fade">
-      <div class="equipe-photo">
-        <img src="assets/equipe-1.jpg" alt="Equipe de produção da Podlist Cultural" loading="lazy" decoding="async">
+    <div class="equipe-carousel fade" id="equipeCarousel" aria-roledescription="carrossel" aria-label="Fotos da equipe de produção">
+      <div class="equipe-track" id="equipeTrack">
+        <div class="equipe-slide"><img src="assets/equipe-1.jpg" alt="Equipe de produção da Podlist Cultural" loading="lazy" decoding="async"></div>
+        <div class="equipe-slide"><img src="assets/equipe-2.jpg" alt="Equipe de produção da Podlist Cultural com Sheron Lumynes" loading="lazy" decoding="async"></div>
+        <div class="equipe-slide"><img src="assets/equipe-3.jpg" alt="Equipe de produção da Podlist Cultural" loading="lazy" decoding="async"></div>
+        <div class="equipe-slide"><img src="assets/equipe-4.jpg" alt="Equipe de produção da Podlist Cultural" loading="lazy" decoding="async"></div>
+        <div class="equipe-slide"><img src="assets/equipe-5.jpg" alt="Equipe de produção da Podlist Cultural em estúdio" loading="lazy" decoding="async"></div>
+        <div class="equipe-slide"><img src="assets/equipe-6.jpg" alt="Equipe de produção da Podlist Cultural" loading="lazy" decoding="async"></div>
       </div>
-      <div class="equipe-photo">
-        <img src="assets/equipe-2.jpg" alt="Equipe de produção da Podlist Cultural com Sheron Lumynes" loading="lazy" decoding="async">
-      </div>
+      <button class="equipe-arrow equipe-prev" type="button" aria-label="Foto anterior">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button class="equipe-arrow equipe-next" type="button" aria-label="Próxima foto">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+      <div class="equipe-dots" id="equipeDots" role="tablist" aria-label="Selecionar foto"></div>
     </div>
 
   </div>
