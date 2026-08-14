@@ -220,7 +220,7 @@
     <div class="agenda-header fade">
       <div class="eyebrow">Pra onde vamos</div>
       <h2 class="sec-title" id="agenda-titulo">Nossa agenda</h2>
-      <p class="sec-desc">Acompanhe os próximos eventos culturais onde a Podlist Cultural vai estar cobrindo tudo ao vivo.</p>
+      <p class="sec-desc">Acompanhe os eventos culturais da Podlist Cultural — dos próximos aos que a gente já cobriu ao vivo.</p>
     </div>
 
     <div class="agenda-card fade">
@@ -249,6 +249,38 @@
             Veja a Podlist em Açailândia — Parte 2
           </a>
         </div>
+      </div>
+    </div>
+
+    <!-- Galeria de fotos da cobertura — TODO: trocar as 3 imagens abaixo pelas fotos reais do Nordestão 2026 assim que chegarem -->
+    <div class="cobertura fade" aria-labelledby="cobertura-titulo">
+      <div class="cobertura-header">
+        <div class="eyebrow" style="justify-content:center">Nordestão 2026</div>
+        <h3 class="cobertura-title" id="cobertura-titulo">Cobertura em fotos</h3>
+      </div>
+
+      <div class="cobertura-carousel" id="coberturaCarousel" aria-roledescription="carrossel" aria-label="Fotos da cobertura do Nordestão 2026">
+        <div class="cobertura-track" id="coberturaTrack">
+          <div class="cobertura-slide">
+            <img src="assets/nordestao.jpg" alt="Cartaz do Nordestão 2026" loading="lazy" decoding="async">
+            <span class="cobertura-caption">Nordestão 2026 · Açailândia (MA)</span>
+          </div>
+          <div class="cobertura-slide">
+            <img src="assets/equipe-2.jpg" alt="Equipe da Podlist Cultural em cobertura no Nordestão 2026" loading="lazy" decoding="async">
+            <span class="cobertura-caption">Nordestão 2026 · Açailândia (MA)</span>
+          </div>
+          <div class="cobertura-slide">
+            <img src="assets/equipe-5.jpg" alt="Equipe da Podlist Cultural em cobertura no Nordestão 2026" loading="lazy" decoding="async">
+            <span class="cobertura-caption">Nordestão 2026 · Açailândia (MA)</span>
+          </div>
+        </div>
+        <button class="cobertura-arrow cobertura-prev" type="button" aria-label="Foto anterior">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="cobertura-arrow cobertura-next" type="button" aria-label="Próxima foto">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+        <div class="cobertura-dots" id="coberturaDots" role="tablist" aria-label="Selecionar foto"></div>
       </div>
     </div>
 
