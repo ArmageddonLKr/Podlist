@@ -1004,17 +1004,6 @@ section { padding: 112px 0; }
   object-position: center;
   pointer-events: none;
 }
-.cobertura-caption {
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
-  padding: 40px 28px 20px;
-  background: linear-gradient(to top, rgba(10,2,20,.82), rgba(10,2,20,0));
-  color: var(--branco);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: .3px;
-}
-
 .cobertura-arrow {
   position: absolute;
   top: 50%;
@@ -1052,10 +1041,6 @@ section { padding: 112px 0; }
   transition: background .2s, width .2s;
 }
 .cobertura-dot.is-active { width: 22px; background: var(--amarelo); }
-
-@media (max-width: 640px) {
-  .cobertura-caption { padding: 32px 18px 16px; font-size: 12px; }
-}
 
 /* --------------------------------------------------------------------------
    CRIAÇÃO DE SITES (Presença Digital)
